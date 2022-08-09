@@ -3,170 +3,113 @@
 
 console.log(`Tic tac toe`);
 
-// const pickPlayer = function(){
 
-  
-    
-//         if ($(`#x`).click(``)){
-//             playerOne = $(`#x`);
-//             playerTwo = $(`#o`);
-
-//             console.log('picked');
-            
-//         } else if( $(`#o`).click(``)){
-//             playerOne = $(`#o`);
-//             playerTwo = $(`#x`);
-            
-//             console.log('pick');
-
-//         } else {
-//             console.log(`Please pick player`);
-//     }}
-
-// function for picking which player
-
-
-
+//---------------- Global Variables ------------------------//
 let playerOne = 0;
 let playerTwo = 0;
 
-// Creating two player game on click
+//---------- Assigning game type / 1 or 2 player -----------//
 const twoPlayer = $(`#player2`).on(`click`, function(){
     console.log(`working`);
     // assign which character chosen functions
     $(`#x`).on(`click`,function(){
-        playerOne = $(`#x`);
-        playerTwo = $(`#o`);
-        console.log('x2');
+        playerOne = $(`#x`).html();
+        playerTwo = $(`#o`).html();
+        console.log(playerOne);
+        console.log(playerTwo);
         
     });
     
     $(`#o`).on(`click`, function(){
-        playerOne = $(`#o`);
-        playerTwo = $(`#x`);
-        console.log(`o2`);
+        playerOne = $(`#o`).html();
+        playerTwo = $(`#x`).html();
+        console.log(playerOne);
+        console.log(playerTwo);
     });
     
 });
 
-//Creating one player game
+//------------- Creating one player game ------------//
 const onePlayer = $(`#player1`).on(`click`, function(){
     console.log(`working1`);
     // assign which character chosen functions
     $(`#x`).on(`click`,function(){
-        playerOne = $(`#x`);
-        playerTwo = $(`#o`);
-        console.log('x1');
+        playerOne = $(`#x`).html();
+        playerTwo = $(`#o`).html();
+        console.log(playerOne);
         
     });
-    
     $(`#o`).on(`click`, function(){
-        playerOne = $(`#o`);
-        playerTwo = $(`#x`);
-        console.log(`o1`);
+        playerOne = $(`#o`).html();
+        playerTwo = $(`#x`).html();
+        console.log(playerOne);
     });
     
 });
 
-//Global variable 
-let playerToken = true;
+//-------- Changing between players (True/False) ------------//
+
+
+// if( playerOne === (`#o`) || playerOne === (`#x`)){
+//     
+let playerToken = true; 
+
+
 const play = function(){
-    if (playerToken === false){
+    // if(playerOne != $(`#o`).html()  || playerOne != $(`#x`).html()){
+    //     return(`please select player`)
+    if ( playerToken === false ){
         playerToken = true;
-        playerTurn = playerOne
-        console.log(playerToken, playerTurn, `player turn should be true`);
-    } else {
-        playerToken = false;
         playerTurn = playerTwo;
+        console.log(playerToken, playerTurn, `player turn should be true`);
+    } else if (playerToken === true){
+        playerToken = false;
+        playerTurn = playerOne;
         console.log(playerToken, playerTurn, `player turn is false`);
-    }
+    } else {
+        return(`Please select player`);
+}} ;
+// $(`#stickers`).click(play);
 
- } 
 
 
-// let playerTurn = playerOne;
-// const playO = function(){
-//     if (playerTurn === playerTwo){
-//         playerTurn = playerOne;
-//         console.log(playerTurn, `player turn should be true`);
-//     } else {
-//         playerToken = playerTwo;
-//         console.log(playerTurn, `player turn is false`);
-//     }
-
-//  } 
-
-//     if ( ){
-
-//     }
-
-// player = 
-//true false statement 
-
-// player is X then html(). player = 0
+//---------- Changing Grid based on turn -------------///
+// simplify to grid item not this long thing
 
 
 $(`#1`).on(`click`, function(){
     play();
-    $(`#1`).html(`playerTurn`);
+    $(`#1`).html(`${playerTurn}`);
+}); 
+$(`#2`).on(`click`, function(){
+    play();
+    $(`#2`).html(`${playerTurn}`);
 });
-    
-$(`#2`).on(`click`, play);
-
 $(`#3`).on(`click`, function(){
-    $(`#3`).html(`x`);
+    play();
+    $(`#3`).html(`${playerTurn}`);
 });
-
 $(`#4`).on(`click`, function(){
-    $(`#4`).html(`x`);
+    play();
+    $(`#4`).html(`${playerTurn}`);
 });
 $(`#5`).on(`click`, function(){
-    $(`#5`).html(`x`);
+    play();
+    $(`#5`).html(`${playerTurn}`);
 });
-
 $(`#6`).on(`click`, function(){
-    $(`#6`).html(`x`);
+    play();
+    $(`#6`).html(`${playerTurn}`);
 });
 $(`#7`).on(`click`, function(){
-    $(`#7`).html(`x`);
+    play();
+    $(`#7`).html(`${playerTurn}`);
 });
-
 $(`#8`).on(`click`, function(){
-    $(`#8`).html(`x`);
+    play();
+    $(`#8`).html(`${playerTurn}`);
 });
 $(`#9`).on(`click`, function(){
-    $(`#9`).html(`x`);
+    play();
+    $(`#9`).html(`${playerTurn}`);
 });
-
-    // $(`#player2`).click(twoPlayer);
-    
-
-
-
-// Creating two player game on click
-// const twoPlayer = $(`#player2`).on(`click`, function(){
-
-//     if ($(`#x`).click(``)){
-//         playerOne = $(`#x`);
-//         playerTwo = $(`#o`);
-
-//         console.log('picked');
-        
-//     } elseif( $(`#o`).click(``)){
-//         playerOne = $(`#o`);
-//         playerTwo = $(`#x`);
-        
-//         console.log('pick');
-        
-    
-//     } else {
-//         console.log(`Please pick player`);
-//      }
-// })
-
-//     $(`#player2`).click(twoPlayer);
-//     console.log(`working`);
-
-
-
-// Winning guesses array
