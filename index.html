@@ -6,39 +6,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="css/tic-tac-toe.css">
+    <link href="https://allfont.net/allfont.css?fonts=star-jedi" rel="stylesheet" type="text/css" />
+    <link id="style1" href="http://fonts.cdnfonts.com/css/star-jedi-hollow" rel="stylesheet">
+    <!-- <link href="//db.onlinewebfonts.com/c/0c724f6aa457310440cf8949c615cbd7?family=Star+Jedi" rel="stylesheet" type="text/css"/> 
+    <iframe src="https://giphy.com/embed/1ZjLRSrAyikUzypJfa" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen> -->
+        
+    <!-- <a id="title" href="https://fontmeme.com/fonts/star-jedi-font/"><img src="https://fontmeme.com/permalink/220811/fd39f865cb657d32f714fe8276817ffa.png" alt="star-jedi-font"></a> -->
+   
+                
 </head>
 <body>
+    
 
     <!--Heading -->
-    <h1>Tic Tac Toe</h1> 
-    <!--Buttons for players-->
+    <h1>
+    <img src="https://fontmeme.com/permalink/220811/fd39f865cb657d32f714fe8276817ffa.png" alt="star-jedi-font">
+   
+    </h1> 
+    <!--Buttons for players select player mode-->
     <div id="players">
-        <button id="player1">1 Player</button>
-        <button id="player2">2 Player</button>
+        <h4><img src="https://fontmeme.com/permalink/220811/f68272f36b581284f207824532169823.png" alt="star-jedi-font"></h4>
+        
+        <!-- <div id="xwins2"><img src="https://fontmeme.com/permalink/220812/98cc5578c6d9581213a886decdf9eb65.png"><div>
+        <div id="owins2"><img src="https://fontmeme.com/permalink/220812/5bbec4f2ac34bfce9c805f0242fcddf7.png"><div>
+        <div id="owins1"><img src="https://fontmeme.com/permalink/220812/995ab633c0a434aa08cad0d92394ecc9.png" alt="star-jedi-font"></div>
+        <div id="owins1"><img src="https://fontmeme.com/permalink/220812/995ab633c0a434aa08cad0d92394ecc9.png" alt="star-jedi-font"></div>
+        <div id="xwins1"><img src="https://fontmeme.com/permalink/220812/8521424942b4ae9f636b7b87de6fd01a.png"></div> -->
+        <button id="player1"><img src="https://fontmeme.com/permalink/220811/a20b291034b65290534383b29525e92a.png" alt="star-jedi-font"></button>
+        <button id="player2"><img src="https://fontmeme.com/permalink/220811/3af4654dee2658f019ba37098ce35f73.png" alt="star-jedi-font"></button>
     </div>
-    <!--Refresh for players-->
-    <div>
-    <button id="refresh">Refresh</button>
-    </div>  
+ 
+
+
+    <br>
+   
     <!--Buttons for players-->
     <br>
         <div id="game" class="grid-container">
-                <div id="1" class="grid-item">1</div>
-                <div id="2" class="grid-item">2</div>
-                <div id="3" class="grid-item">3</div>
-                <div id="4" class="grid-item">4</div>
-                <div id="5" class="grid-item">5</div>
-                <div id="6" class="grid-item">6</div>
-                <div id="7" class="grid-item">7</div>
-                <div id="8" class="grid-item">8</div>
-                <div id="9" class="grid-item">9</div>
+                <div id="0" class="grid-item free"></div>    
+                <div id="1" class="grid-item free"></div>
+                <div id="2" class="grid-item free"></div>
+                <div id="3" class="grid-item free"></div>
+                <div id="4" class="grid-item free"></div>
+                <div id="5" class="grid-item free"></div>
+                <div id="6" class="grid-item free"></div>
+                <div id="7" class="grid-item free"></div>
+                <div id="8" class="grid-item free"></div>  
+             
+                <div id="stickerO">
+                 <h3>Player O</h3>
+                <img id="o" src="https://fontmeme.com/permalink/220811/5af7525b891b309e7027da47e2b81db9.png" alt="star-jedi-font">
+                
+                 </div>
+
+                <div id="stickerX">
+                <h3>PLayer X</h3>
+                <img id="x" src="https://fontmeme.com/permalink/220811/59eb4c78f1410fd7bcf80ec48f16cc1a.png" alt="star-jedi-font">
+                <img id="gameWon" src="./lightsaber.gif" alt="lightsaberfight">
+                </div>
         </div>
+    <!--Refresh for players-->
+
+    
+    <div id="gameButtons">
+    <button id="refresh"><img src="https://fontmeme.com/permalink/220811/09f357120017fb04d45bf5553a9b3779.png" alt="star-jedi-font" height="20px"></button>
+    <button id="newgame"> <img src="https://fontmeme.com/permalink/220811/7f2c27450d30f73fd736bddd15cafc1f.png" alt="star-jedi-font" height="20px"></button>
+    </div> 
+
     <br>
-    <div id="stickers">
-        <h4>Select Character</h4>
-        <button id="x">X</button>
-        <button id="o">O</button>
+    <div class="scores">
+    <div id="Scores"><img src="https://fontmeme.com/permalink/220811/aaa07d41d5861661d782e6a629c1cb79.png" alt="star-jedi-font"></div>   
+    <div id="scoreX">0</div>
+    <div id="scoreO">0</div>
     </div>
+    <!--Stickers and Scores X-->
+  
+    <!--Stickers and Scores O-->
+ 
+    
+    
+
+    <!-- <img id="background" src="/Users/mohamaddakdouk/sei/projects/tic-tac-toe practice/AdobeStock_407880671(2).jpeg" alt=""> -->
 
     <script src="js/jquery.js"></script>
     <script src="js/tic-tac-toe.js"></script>

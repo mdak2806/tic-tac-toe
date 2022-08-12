@@ -1,15 +1,63 @@
 
-h1{
-  color: black;
-  font-size: large;
-  text-align: center;
+body {
+ background-image: url("../background.gif");
+  background-position: center center;
+  background-size: 100% 100%;
 }
+
+h1{
+  text-align: center;
+  height: 100px;
+}
+#gameButtons{
+  text-align: center;
+
+}
+
+#players{
+  text-align: center;
+  position: relative;
+}
+
+#message{
+  text-align: center;
+  color: black;
+  font-size: 4em;
+  width:50%;
+}
+
+#gameWon{
+    position: absolute;
+    top: -89px;
+    left: 109px;
+    opacity: 0.9;
+    width: 600px;
+    height: 441px;
+}
+
+#xwins2,#owins2, #xwins1, #owins1 {
+  display: none;
+ /* display: flex; */
+  /* position: absolute; */
+  /* top: 0; */
+  /* left: 0; */
+  /* display: none; */
+
+}
+
+
 
 .grid-container {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 200px 200px 200px;
   background-color: #10141868;
   padding: 10px;
+  border: 3px solid rgb(213, 234, 54);
+  width: fit-content;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  position: relative;
+
 }
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
@@ -17,8 +65,47 @@ h1{
   padding: 20px;
   font-size: 30px;
   text-align: center;
+  height: 100px;
+  line-height: 100px;
+  font-size: 5em;
 }
 
+#stickerX {
+  position: absolute;
+  top: 20%;
+  left: -100px;
+  width: fit-content;
+  display: inline-block;
+}
+
+#stickerO {
+  position: absolute;
+  top: 20%;
+  right: -100px;
+  width: fit-content;
+  display: inline-block;
+}
+.scores{
+  text-align: center;
+  color: aliceblue;
+}
+#scoreX{
+  left: 500px;
+  top: 954px;
+  font-size: 4em;
+  width:50%;
+  margin : 0;
+  float : left ;
+  display: block;
+}
+
+#scoreO{
+  font-size: 4em;
+  width:50%;
+  margin : 0;
+  float : left ;
+  display: block;
+}
 
 
 
