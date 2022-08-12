@@ -3,15 +3,10 @@
 
 console.log(`Tic tac toe`);
 
-$(`#gameWon`).hide();
-$(`#messages`).hide();
 
-// $(`#xwins2`).hide();
-// $(`#owins2`).hide();
-// $(`#xwins1`).hide();
-// $(`#owins1`).hide();
 
 //---------------- Global Variables ------------------------//
+
 let playerOne;
 let playerTwo;
 
@@ -19,9 +14,6 @@ let playerXScore = 0;
 let playerOScore = 0;
 
 let onePlayerMode;
-let playerTwoNextMove
-
-
 
 let gridArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -37,27 +29,30 @@ let globalObjects = {
     8: 8,
 };
 
-
-
 // ------------- Global actions for Game function -------------//
 
-// Enforcing player to pick variables
-// $(`#game`).hide();
-// $(`#stickers`).hide();
+// Hides the winning gif only activated once win occurs
+$(`#gameWon`).hide();
 
-// refresh a page
+// Hard refreshes the current game page 
 $(`#refresh`).click(function(){
     location.reload(true);
-    // TODO: potentially could set scores to 0, and reinitialise all the global variables instead of a refresh
 });
 
-// New game button an assoicated actions
+// ------------ New Game function ----------------------------//
+// New game button function once clicked used to keep current game but clear grid 
 $(`#newgame`).click(function(){
+
+    // Refilling gridArray, to reset isOne function to check for win conditions
     gridArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-    // Refresh and clear grid
-    $(`#messages`).hid();
+    
+    // Clear html text elements used in game 
+    $(`#messages`).html(``);
+    $(`#messages`).css("visibility", "hidden");
     $('.grid-item').html('');
     $(`#gameWon`).hide();
+
+    //Refilling global objects used to check empty grid items for AI compoenent 
     globalObjects = {
         0: 0,
         1: 1,
@@ -72,12 +67,6 @@ $(`#newgame`).click(function(){
 
     //Reseting the gameOver variable to false after win
     gameOver = false;
-    $(`#message`).hide();
-    $(`#xwins2`).hide();
-    $(`#owins2`).hide();
-    $(`#xwins1`).hide();
-    $(`#owins1`).hide();
-    
 });
 
 
@@ -86,28 +75,22 @@ $(`#newgame`).click(function(){
 
 //----------Selecting 2 Player mode -----------//
 $(`#player2`).on(`click`, function(){
-    $(`h4`).css("visibility", "hidden");
-    // Present next steps after picking Game type
-    $(`#stickers`).show();
     
-    // Assign characters and present Grid
+    // Hides instructions once clicking mode
+    $(`h4`).css("visibility", "hidden");
+    
+    /// Assign characters to the player depending on click
     $(`#x`).on(`click`,function(){
         playerOne = `X`;
         playerTwo = `O`;
         gameOver = false;
-        // $(`#score1`).html(`${playerOneScore}`);
-        console.log($(`#score1`).html(""));
-        // TODO: add tokens change to $(`#x`).img or html() 
-        // TODO: playerTwo = $(`#x`).html();
     });
     
-    // Assign characters and present Grid
+    // Assign characters to the player depending on click
     $(`#o`).on(`click`, function(){
         playerOne = `O`;
         playerTwo = `X`;
         gameOver = false;
-        $(`#score2`).html(`${playerTwoScore}`);
-        console.log($(`#score1`).html(""));
     });
     
 });
@@ -118,36 +101,34 @@ $(`#player2`).on(`click`, function(){
 
 
 $(`#player1`).on(`click`, function(){
+     // Hides instructions once clicking mode
     $(`h4`).css("visibility", "hidden");
 
     onePlayerMode = true;
-    // Present next steps after picking Game type
-    $(`#stickers`).show();
 
-    // Assign characters and present Grid
+    // Assign characters to the player depending on click
     $(`#x`).on(`click`,function(){
         playerOne = `X`;
         playerTwo = `O`;
         gameOver = false;
-        // $(`#scoreX`).html(`${playerOneScore}`);
     });
 
-    // Assign characters and present Grid
+    // Assign characters to the player depending on click
     $(`#o`).on(`click`, function(){
         playerOne = `O`;
         playerTwo = `X`;
         gameOver = false;
-        // $(`#scoreO`).html(`${playerTwoScore}`);
     });
     
 });
 
 
 
-let playerToken = true; 
-//-------- Changing between players (True/False) ------------//
 
-const play = function(){
+//-------- Changing between players (True/False) ------------//
+// playerToken set as true to identify player 1 as turn 1
+let playerToken = true; 
+const changePlayer = function(){
 
     //Identifying player turn through true and false and setting variables
     
@@ -171,53 +152,55 @@ let computerToken = true;
 
 
 
-//----------- Function identifying Win and player Sticker --------// 
+//----------- Function Place Stickers --------//
+
 const placeSticker = function(){
 
     
     // if statement used to stop it from double clicking
+    // identifies empty squares and only allows placement if gameOver statement is false
     if ($(this).html() === `` && gameOver === false){
     console.log('this is beng hit')
-    // play function introduced to let change player function to change
     
-    
-    // Allowing auto play
-    // autoGame();
-    play();
-    //This inputs the players turn into the grid below / removes double click
-    
-        
-        $(this).html(`${playerTurn}`);
-    
+    // changeplayer function introduced to let change player function to change
+    changePlayer();
 
+    //This inputs the players turn into the grid below based on the sticker of each player 
+    $(this).html(`${playerTurn}`);
+    
+    
+    // ----- below relates to player one mode -----//
+    //deletes the players turn that corresponds to the grid and object this data is only utilised for the one player mode
+    // allows computer to identify empty grid items
     delete globalObjects[parseInt($(this).attr("id"))];
     console.log(`global objects`,globalObjects)
     console.log(`${$(this).html(`${playerTurn}`)}`);
    
 
-    //Runs the checkWinner function after every turn
+    //Runs the checkWinner function after every none-computer turn
     checkWinner();
     
-    // Identify the next turn in new game
-    
-    // if we're in 1 player mode
+    // Identify the next turn in new game if we're in 1 player mode
     if (playerToken === false){
 
     if (onePlayerMode === true) {
-            play();
-            keys = Object.keys(globalObjects);
-            let nextMove = keys[Math.floor(Math.random()*keys.length)];
-            if( gameOver === false){
+            // Object keys identify the current remaining keys within the object
 
+            changePlayer();
+            keys = Object.keys(globalObjects);
+
+            // The number of keys, a random value is selected and stored as nextMover variable
+            let nextMove = keys[Math.floor(Math.random()*keys.length)];
             
+            // Ensures gameOver is false before placing computer move
+            if( gameOver === false){
             $(`#${nextMove}`).html(`${playerTwo}`);
+
+            // Deletes its own move from the object for the next move
             delete globalObjects[nextMove];
+
+            //checks computer has won
             checkWinner();
-            console.log(`global objects`,globalObjects)
-            
-            // playerTurn = playerOne;
-            // playerWaiting = playerTwo;
-            // playerToken = true;
 
             }
             }
@@ -230,7 +213,7 @@ const placeSticker = function(){
 
 
 //---------- Changing Grid based on turn -------------///
-// simplify to grid item not this long thing
+// After each click on the corresponding grid-item placeSticker is run, this also allows $this to identify what grid item to change
 
 $(`#0`).on(`click`, placeSticker);
 $(`#1`).on(`click`, placeSticker); 
@@ -242,12 +225,11 @@ $(`#6`).on(`click`, placeSticker);
 $(`#7`).on(`click`, placeSticker);
 $(`#8`).on(`click`, placeSticker);
 
-
+// place gameOver as after this point once last click function is placed, and gameOver is not identified the game is a tie.
+//Did not add the tie count would be a easy addition
 let gameOver = true;
-    // add function here
 
-
-    //-------- win factors ---------///
+//--------------- win factors -------------///
 const winningCombinations = [
     [0, 1, 2],
     [3, 4, 5], 
@@ -264,35 +246,27 @@ let threeArray = [];
 // let result = false
 const checkWinner = function(){
     
-    // loops to see what is inside the combo
+    // loops through each winning combinations for the game 
     for (let i = 0; i < winningCombinations.length; i++) {
         
         // Loop grabs the variables and stores it within combo variable
-
         const combo = winningCombinations[i];
-        // every function compares the combo array to the isOne function - to ensure they match
+        
+        // the stored combos are then compared to the stored threeway array through the forEach function 
         threeArray =[];   
-        // combo.every(isOne);
 
         combo.forEach(isOne);
+
+        // As the comparisions are complete we need a way to compare the stored data, it checks that the values in each array 
         if (threeArray[0] === threeArray[1]){
 
             if( threeArray[1] === threeArray[2]){
                 if(threeArray[0] === ''){
-                    // console.log('No win');
-                } 
-                else {
+                } else {
                     gameOver = true;
                     scoreBoard();
                     $(`#gameWon`).show();
                     winMessage();
-                    
-                    // $(`#xwins2`).show();
-                    winMessage();
-                    console.log( $(`#scoreX`).html(`${playerXScore}`));
-                    console.log(`This is win`);
-
-                    
                 }
                 
             }
@@ -300,13 +274,16 @@ const checkWinner = function(){
     }   
 }
 
-
+// isOne function for every move takes the token and pushes it into the threeArray - stores the information regarding to characters in each location
 const isOne = function(token){
-     square = $(`#${token}`).html(); 
+    square = $(`#${token}`).html(); 
     threeArray.push(square);
     return square 
        }
 
+//---------------- scoreBoard function -----------------------//
+//scoreBoard function used to update the current scores of player X and player O
+//this is placed after gameOver = true, so only runs if a win situation occurs
 const scoreBoard = function(){
     if(playerTurn === 'X'){
         playerXScore++;
@@ -317,58 +294,17 @@ const scoreBoard = function(){
     }
 };
 
+// ----------------- winMessage function ----------------//
+// winMessage function used to display win messages once game is over
+// achieved by checking current player mode type and current player turn
+// this is placed after gameOver = ture, so only runs if a win situation occurs
 const winMessage = function(){
     if(onePlayerMode === true && playerTurn === playerOne ){
-    // $(`#xwins1`).show();
-    $(`#messages`).html(`May the Force be with you ${playerTurn} You WIN! ${playerTurn} now make the FIRST MOVE!`);
-    $(`#messages`).show();
+ 
+    $(`#messages`).css("visibility", "visible");
+    $(`#messages`).html(`Player ${playerTurn} WINS! Player ${playerTurn} has FIRST MOVE!`);
        
-    } else { $(`#messages`).html(`May the Force be with you ${playerTurn} You WIN! ${playerWaiting} now make the FIRST MOVE!`);
-     $(`#messages`).show()
-}
+    } else { $(`#messages`).css("visibility", "visible");
+        $(`#messages`).html(`Player ${playerTurn} WINS! Player ${playerWaiting} has FIRST MOVE!`); 
 };
-
-
-// $(`#owins2`).show();
-// $(`#xwins1`).show();
-// $(`#owins1`).show();       
-
-
-
-// // Win with auto game
-// if(onePlayerMode === false){
-//     console.log(`${playerTurn} you are the winner`);
-//     console.log('this is beging hit');
-    
-//     if(playerTurn === playerTwo){
-//     console.log('this is beging hit');
-    
-    
-//     $(`#message`).html(`${playerTurn} Wins! Loser ${playerWaiting} begins`);
-//     console.log($(`#message`).html())
-
-//     console.log(`player 1 mode  is active comp win`)
-//     $(`#message`).show();
-//     playerTurn = playerOne;
-//     playerToken = true;
-
-//     }else if (playerTurn === playerOne) {
-//     $(`#message`).html(`${playerTurn} Wins! Loser ${playerTurn} begins`);
-//     $(`#message`).show();
-//     playerTurn = playerOne;
-//     playerToken = true;
-//     console.log(`player 1 mode  is active comp win`)
-// };
-// if(playerTurn === playerOne) {
-//     gameOver = true;
-//     // playerOneScore++
-
-//     console.log({playerOneScore, playerTwoScore})
-// } if(playerTurn === playerTwo){
-//     gameOver = true;
-//     // playerTwoScore++
-//     console.log({playerOneScore, playerTwoScore})
-// } if (onePlayerMode === true){
-    
-// }
-// }
+}

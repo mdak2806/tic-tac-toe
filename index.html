@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="css/tic-tac-toe.css">
     <link href="https://allfont.net/allfont.css?fonts=star-jedi" rel="stylesheet" type="text/css" />
     <link id="style1" href="http://fonts.cdnfonts.com/css/star-jedi-hollow" rel="stylesheet">
-    <!-- <link href="//db.onlinewebfonts.com/c/0c724f6aa457310440cf8949c615cbd7?family=Star+Jedi" rel="stylesheet" type="text/css"/> 
-    <iframe src="https://giphy.com/embed/1ZjLRSrAyikUzypJfa" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen> -->
-        
-    <!-- <a id="title" href="https://fontmeme.com/fonts/star-jedi-font/"><img src="https://fontmeme.com/permalink/220811/fd39f865cb657d32f714fe8276817ffa.png" alt="star-jedi-font"></a> -->
-   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display:ital,wght@1,100&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Distressed&display=swap" rel="stylesheet"> 
                 
 </head>
 <body>
@@ -27,11 +28,7 @@
     <div id="players">
         <h4><img src="https://fontmeme.com/permalink/220811/f68272f36b581284f207824532169823.png" alt="star-jedi-font"></h4>
         <div id="messages"></div>
-        <!-- <div  id="xwins2" aria-hidden="true"><img src="https://fontmeme.com/permalink/220812/98cc5578c6d9581213a886decdf9eb65.png"><div>
-        <div aria-hidden="true" id="owins2"><img src="https://fontmeme.com/permalink/220812/5bbec4f2ac34bfce9c805f0242fcddf7.png"><div>
-        <div aria-hidden="true" id="owins1"><img src="https://fontmeme.com/permalink/220812/995ab633c0a434aa08cad0d92394ecc9.png" alt="star-jedi-font"></div>
-        <div aria-hidden="true" id="owins1"><img src="https://fontmeme.com/permalink/220812/995ab633c0a434aa08cad0d92394ecc9.png" alt="star-jedi-font"></div>
-        <div aria-hidden="true" id="xwins1"><img src="https://fontmeme.com/permalink/220812/8521424942b4ae9f636b7b87de6fd01a.png"></div> -->
+        <!--Selecting player mode buttons-->
         <button id="player1"><img src="https://fontmeme.com/permalink/220811/a20b291034b65290534383b29525e92a.png" alt="star-jedi-font"></button>
         <button id="player2"><img src="https://fontmeme.com/permalink/220811/3af4654dee2658f019ba37098ce35f73.png" alt="star-jedi-font"></button>
     </div>
@@ -42,6 +39,7 @@
    
     <!--Buttons for players-->
     <br>
+    <!--grid for game-->
         <div id="game" class="grid-container">
                 <div id="0" class="grid-item free"></div>    
                 <div id="1" class="grid-item free"></div>
@@ -52,7 +50,7 @@
                 <div id="6" class="grid-item free"></div>
                 <div id="7" class="grid-item free"></div>
                 <div id="8" class="grid-item free"></div>  
-             
+    <!--stickers for players-->
                 <div id="stickerO">
                  <h3>Player O</h3>
                 <img id="o" src="https://fontmeme.com/permalink/220811/5af7525b891b309e7027da47e2b81db9.png" alt="star-jedi-font">
@@ -65,7 +63,8 @@
                 <img id="gameWon" src="./lightsaber.gif" alt="lightsaberfight">
                 </div>
         </div>
-    <!--Refresh for players-->
+    
+    <!--Refresh for game-->
 
     
     <div id="gameButtons">
@@ -73,20 +72,21 @@
     <button id="newgame"> <img src="https://fontmeme.com/permalink/220811/7f2c27450d30f73fd736bddd15cafc1f.png" alt="star-jedi-font" height="20px"></button>
     </div> 
 
+    <!--Scores for players-->
     <br>
     <div class="scores">
     <div id="Scores"><img src="https://fontmeme.com/permalink/220811/aaa07d41d5861661d782e6a629c1cb79.png" alt="star-jedi-font"></div>   
     <div id="scoreX">0</div>
     <div id="scoreO">0</div>
     </div>
-    <!--Stickers and Scores X-->
-  
-    <!--Stickers and Scores O-->
- 
-    
-    
 
-    <!-- <img id="background" src="/Users/mohamaddakdouk/sei/projects/tic-tac-toe practice/AdobeStock_407880671(2).jpeg" alt=""> -->
+     
+    <!--Potentially use in future for Win messages within theme -->
+    <!-- <div  id="xwins2" aria-hidden="true"><img src="https://fontmeme.com/permalink/220812/98cc5578c6d9581213a886decdf9eb65.png"><div>
+     <div aria-hidden="true" id="owins2"><img src="https://fontmeme.com/permalink/220812/5bbec4f2ac34bfce9c805f0242fcddf7.png"><div>
+     <div aria-hidden="true" id="owins1"><img src="https://fontmeme.com/permalink/220812/995ab633c0a434aa08cad0d92394ecc9.png" alt="star-jedi-font"></div>
+     <div aria-hidden="true" id="owins1"><img src="https://fontmeme.com/permalink/220812/995ab633c0a434aa08cad0d92394ecc9.png" alt="star-jedi-font"></div>
+     <div aria-hidden="true" id="xwins1"><img src="https://fontmeme.com/permalink/220812/8521424942b4ae9f636b7b87de6fd01a.png"></div> -->
 
     <script src="js/jquery.js"></script>
     <script src="js/tic-tac-toe.js"></script>

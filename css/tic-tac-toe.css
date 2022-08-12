@@ -1,6 +1,6 @@
 
 body {
- background-image: url("../move.webp");
+ background-image: url("../sky.webp");
   background-position: center center;
   background-size: 100% 100%;
 }
@@ -14,30 +14,21 @@ h1{
 
 }
 
-  /* display: none; */
-  /* text-align: center;
-  display: none; */
- /* display: flex; */
-  /* position: absolute; */
-  /* top: 0; */
-  /* left: 0; */
-  /* display: none; */
-
-
-
 #players{
   text-align: center;
   position: relative;
 }
 
 #messages{   
+  font-family: 'Rubik Distressed', cursive;
+  text-align: block;
   color: rgb(236, 240, 30);
   font-size: 2em;
   width: 100;
   top: 10%;
   font: bold;
+  opacity: 0.6;
 }
-
 
 #gameWon{
     position: absolute;
@@ -47,10 +38,6 @@ h1{
     width: 600px;
     height: 441px;
 }
-
-
-
-
 
 .grid-container {
   display: grid;
@@ -112,52 +99,9 @@ h1{
   display: block;
 }
 
+@media screen and (max-width: 350px){
+  body {
 
-
-
-/* #content {
-  margin: 0 auto;
-  text-align: center;
-  width: 700px;
+  }
 }
 
-#nav {
-  margin: 50px 0px;
-}
-
-#title {
-  color: #F52F4F;
-  font-family: 'Oleo Script', cursive;
-  font-size: 50px;
-}
-
-#checking {
-  float: left;
-}
-
-#savings {
-  float: right;
-}
-
-.account {
-  background-color: #6C9A74;
-  border: 1px solid #295A33;
-  padding: 10px;
-}
-
-.balance {
-  background-color: #E3E3E3;
-  border: 1px solid #676767;
-  font-family: 'Ruluko', sans-serif;
-  font-size: 50px;
-  padding: 25px 0;
-}
-
-.clear {
-  clear: both;
-}
-
-.zero {
-  background-color: #F52F4F;
-  color: #FFF;
-} */
