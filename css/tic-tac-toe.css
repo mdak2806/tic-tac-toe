@@ -1,6 +1,6 @@
 
 body {
- background-image: url("../background.gif");
+ background-image: url("../move.webp");
   background-position: center center;
   background-size: 100% 100%;
 }
@@ -14,17 +14,30 @@ h1{
 
 }
 
+  /* display: none; */
+  /* text-align: center;
+  display: none; */
+ /* display: flex; */
+  /* position: absolute; */
+  /* top: 0; */
+  /* left: 0; */
+  /* display: none; */
+
+
+
 #players{
   text-align: center;
   position: relative;
 }
 
-#message{
-  text-align: center;
-  color: black;
-  font-size: 4em;
-  width:50%;
+#messages{   
+  color: rgb(236, 240, 30);
+  font-size: 2em;
+  width: 100;
+  top: 10%;
+  font: bold;
 }
+
 
 #gameWon{
     position: absolute;
@@ -35,15 +48,7 @@ h1{
     height: 441px;
 }
 
-#xwins2,#owins2, #xwins1, #owins1 {
-  display: none;
- /* display: flex; */
-  /* position: absolute; */
-  /* top: 0; */
-  /* left: 0; */
-  /* display: none; */
 
-}
 
 
 

@@ -4,6 +4,7 @@
 console.log(`Tic tac toe`);
 
 $(`#gameWon`).hide();
+$(`#messages`).hide();
 
 // $(`#xwins2`).hide();
 // $(`#owins2`).hide();
@@ -54,6 +55,7 @@ $(`#refresh`).click(function(){
 $(`#newgame`).click(function(){
     gridArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     // Refresh and clear grid
+    $(`#messages`).hid();
     $('.grid-item').html('');
     $(`#gameWon`).hide();
     globalObjects = {
@@ -282,10 +284,11 @@ const checkWinner = function(){
                 else {
                     gameOver = true;
                     scoreBoard();
-                    winMessage();
                     $(`#gameWon`).show();
-                    $(`#xwins2`).show();
-                    // winMessage();
+                    winMessage();
+                    
+                    // $(`#xwins2`).show();
+                    winMessage();
                     console.log( $(`#scoreX`).html(`${playerXScore}`));
                     console.log(`This is win`);
 
@@ -315,13 +318,13 @@ const scoreBoard = function(){
 };
 
 const winMessage = function(){
-    if(onePlayerMode === true && playerTurn === playerOne && playerTurn === "X"){
-    $(`#xwins1`).show();
-    // $(`#message`).html(`May the Force be with you ${playerTurn} You WIN! ${playerTurn} now make the FIRST MOVE!`);
-    // $(`#message`).appear();
+    if(onePlayerMode === true && playerTurn === playerOne ){
+    // $(`#xwins1`).show();
+    $(`#messages`).html(`May the Force be with you ${playerTurn} You WIN! ${playerTurn} now make the FIRST MOVE!`);
+    $(`#messages`).show();
        
-    // } else { $(`#message`).html(`May the Force be with you ${playerTurn} You WIN! ${playerWaiting} now make the FIRST MOVE!`);
-    // $(`#message`).appear()
+    } else { $(`#messages`).html(`May the Force be with you ${playerTurn} You WIN! ${playerWaiting} now make the FIRST MOVE!`);
+     $(`#messages`).show()
 }
 };
 
