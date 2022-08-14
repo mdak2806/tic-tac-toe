@@ -3,7 +3,12 @@
 
 console.log(`Tic tac toe`);
 
+const resizeOps = () => {
+    document.documentElement.style.setProperty("--vh", window.innerHeight * 0.01 + "px");
+  };
 
+  resizeOps();
+  window.addEventListener("resize", resizeOps);
 
 //---------------- Global Variables ------------------------//
 
@@ -155,12 +160,10 @@ let computerToken = true;
 //----------- Function Place Stickers --------//
 
 const placeSticker = function(){
-
     
     // if statement used to stop it from double clicking
     // identifies empty squares and only allows placement if gameOver statement is false
     if ($(this).html() === `` && gameOver === false){
-    console.log('this is beng hit')
     
     // changeplayer function introduced to let change player function to change
     changePlayer();
@@ -194,13 +197,13 @@ const placeSticker = function(){
             
             // Ensures gameOver is false before placing computer move
             if( gameOver === false){
-            $(`#${nextMove}`).html(`${playerTwo}`);
+                $(`#${nextMove}`).html(`${playerTwo}`);
 
             // Deletes its own move from the object for the next move
-            delete globalObjects[nextMove];
+                delete globalObjects[nextMove];
 
             //checks computer has won
-            checkWinner();
+                checkWinner();
 
             }
             }
@@ -214,6 +217,7 @@ const placeSticker = function(){
 
 //---------- Changing Grid based on turn -------------///
 // After each click on the corresponding grid-item placeSticker is run, this also allows $this to identify what grid item to change
+// . cell
 
 $(`#0`).on(`click`, placeSticker);
 $(`#1`).on(`click`, placeSticker); 
@@ -228,6 +232,7 @@ $(`#8`).on(`click`, placeSticker);
 // place gameOver as after this point once last click function is placed, and gameOver is not identified the game is a tie.
 //Did not add the tie count would be a easy addition
 let gameOver = true;
+
 
 //--------------- win factors -------------///
 const winningCombinations = [
@@ -254,10 +259,13 @@ const checkWinner = function(){
         
         // the stored combos are then compared to the stored threeway array through the forEach function 
         threeArray =[];   
-
+        
+        // now winning combos are compared to each input in the threeArray which collects the players move this will return a match if they are the same
         combo.forEach(isOne);
 
-        // As the comparisions are complete we need a way to compare the stored data, it checks that the values in each array 
+        // issue with each one it compares all the time and will give a false positive to empty cells or sells with different variables
+        // if statement prevents this by ensuring that the array of cells three in a row are an exact match
+
         if (threeArray[0] === threeArray[1]){
 
             if( threeArray[1] === threeArray[2]){
@@ -268,10 +276,15 @@ const checkWinner = function(){
                     $(`#gameWon`).show();
                     winMessage();
                 }
-                
+
             }
         }       
     }   
+    if( Object.keys(globalObjects).length === 0 && gameOver === false){
+        $(`#gameWon`).show();
+        $(`#messages`).css("visibility", "visible");
+        $(`#messages`).html(`This Game Was a TIE!`); 
+    }
 }
 
 // isOne function for every move takes the token and pushes it into the threeArray - stores the information regarding to characters in each location
@@ -306,5 +319,5 @@ const winMessage = function(){
        
     } else { $(`#messages`).css("visibility", "visible");
         $(`#messages`).html(`Player ${playerTurn} WINS! Player ${playerWaiting} has FIRST MOVE!`); 
+    };
 };
-}

@@ -99,9 +99,53 @@ h1{
   display: block;
 }
 
-@media screen and (max-width: 350px){
-  body {
 
+@media screen and (max-width: 600px){
+  .grid-container {
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    background-color: #10141868;
+    padding: 2px;
+    border: 1px solid rgb(213, 234, 54);
+    width: fit-content;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    position: relative;
+  
   }
-}
+  #stickerX {
+    position: absolute;
+    top: 20%;
+    left: -80px;
+    width: fit-content;
+    display: inline-block;
+  }
+  
+  #stickerO {
+    position: absolute;
+    top: 20%;
+    right: -80px;
+    width: fit-content;
+    display: inline-block;
+  }
 
+  #gameWon{
+    position: absolute;
+    top: -85px;
+    left: 80px;
+    opacity: 0.9;
+    width: 305px;
+    height: 430px;
+}
+  html, body {
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+  }
+  .modal {
+    width: 50vw;
+    height: 50vh;
+    height: calc(var(--vh, 1vh) * 50);
+  }
+  
+  
+}
